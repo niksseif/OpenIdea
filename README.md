@@ -1,5 +1,5 @@
 # OpenIdea
-Full stack web app made by Niksseif.
+Full stack web app made by Niksseif backend
 # Description 
 People have lots of ideas all the time and maybe they write them in their diary, on a piece of paper, a notebook, their notes app, all of the above or like most people they forget to note it anywhere and find it hard to recollect or find it when the time comes to act on it or share it with someone. What good is an idea if you can’t share it or do something with it. I want to create an online place for people to document, share and collaborate on ideas openly.
 # Getting Started
