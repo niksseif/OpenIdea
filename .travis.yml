@@ -3,7 +3,7 @@ cache:
   directories:
   - "node_modules"
 node_js:
-  - "10"
+  - "101"
 services:
   - postgresql
 before_script:
