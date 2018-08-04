@@ -1,15 +1,18 @@
-development: {
-  client: 'pg',
-  connection: 'postgres://localhost/openidea_dv'
-},
+'use strict';
 
-test: {
-  client: 'pg',
-  connection: 'postgres://localhost/openidea_test'
-},
+module.exports = {
+  development: {
+    client: 'pg',
+    connection: 'postgres://localhost/openidea_dv'
+  },
 
-production: {
-  client: 'pg',
-  connection: process.env.DATABASE_URL
-}
+  test: {
+    client: 'pg',
+    connection: 'postgres://localhost/openidea_dv'
+  },
+
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL
+  }
 };
