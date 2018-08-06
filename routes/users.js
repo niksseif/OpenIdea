@@ -1,5 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const knex = require('./OpenIdea/knex.js');
+
 
 /* GET users listing. */
 router.get('/', (req, res, next) =>
