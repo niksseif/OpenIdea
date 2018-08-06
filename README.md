@@ -1,4 +1,4 @@
-# OpenIdea-frontend
+# OpenIdea-backEnd
 Full stack web app made by Niksseif 
 Front end link https://github.com/niksseif/OpenIdea-frontend
 # Description 
