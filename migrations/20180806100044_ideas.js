@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.integer('users_id').notNullable().references('users.id');
     table.string('title').notNullable();
     table.string('description');
+    table.text('image_url');
     table.timestamps(true, true)
   })
 }
