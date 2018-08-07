@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.string('name').notNullable();
     table.string('email').unique().notNullable();
+    table.text('img_url');
     table.specificType('hashed_password', 'char(60)');
     table.timestamps(true, true);
   })
