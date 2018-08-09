@@ -30,8 +30,10 @@ app.use(cors());
 // users route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 // app.use('/signup', signupRouter);
 app.use('/users', signupRouter);
+
 //this is the route for ideas
 app.use('/ideas',ideasRouter);
 

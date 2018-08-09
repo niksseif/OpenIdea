@@ -3,43 +3,30 @@ const router = express.Router();
 const knex = require('../knex');
 const bcrypt = require('bcrypt');
 const path = require('path');
-const md5 = require('md5');
+const jwt = require('jsonwebtoken');
 
-const signupHTML = path.join(__dirname, '..', 'public/signupform.html');
+
 
 router.get('/', (req, res, next) => {
 	res.render('/signup');
 });
-//
-  // if (!email || !email.trim()) {
-  //   return next(boom.create(400, 'Email must not be blank'));
-  // }
-  //
-  // if (!password || password.length < 8) {
-  //   return next(boom.create(
-  //     400,
-  //     'Password must be at least 8 characters long'
-  //   ));
-  // }
+
+
 
 // REGISTER a user
 router.post('/', (req, res, next) => {
 	console.log('/signup was hit');
 	console.log('req body', req.body);
-  let name = req.body.name;
-  let email = req.body.email;
-  let image_url = req.body.image_url;
-  let password = req.body.password;
 	res.contentType('application/json');
-	if (!email || !!email.trim()) {
+	if (!req.body.email || !req.body.password || !req.body.name) {
 		res.statusCode = 400;
-		return ( 'Email must not be blank')
+		res.send('{"result": "failed", "message": "email, password, and name are required."}');
+		return;
 	}
-  if (!password || password.length < 8) {
-    return ( 'Password must be at least 8 characters long')
-  }
-
-
+	let email = req.body.email;
+	let name = req.body.name;
+	let password = req.body.password;
+	let image_url = req.body.image_url
 	//check the email doesn't already exist in users table
 	knex('users')
 		.where('email', req.body.email)
@@ -57,9 +44,9 @@ router.post('/', (req, res, next) => {
 			// create new user record with the email + hashed password
 			knex('users')
 				.insert({
-					name: req.body.name,
-					email: req.body.email,
-          image_url: req.body.image,
+					name: name,
+					email: email,
+					image_url: image_url,
 					hashed_password: hashed,
 				})
 				.returning('*')
