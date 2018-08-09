@@ -3,24 +3,15 @@ const router = express.Router();
 const knex = require('../knex');
 const bcrypt = require('bcrypt');
 const path = require('path');
-const md5 = require('md5');
+const jwt = require('jsonwebtoken');
 
-const signupHTML = path.join(__dirname, '..', 'public/signupform.html');
+
 
 router.get('/', (req, res, next) => {
 	res.render('/signup');
 });
-//
-  // if (!email || !email.trim()) {
-  //   return next(boom.create(400, 'Email must not be blank'));
-  // }
-  //
-  // if (!password || password.length < 8) {
-  //   return next(boom.create(
-  //     400,
-  //     'Password must be at least 8 characters long'
-  //   ));
-  // }
+
+
 
 // REGISTER a user
 router.post('/', (req, res, next) => {
