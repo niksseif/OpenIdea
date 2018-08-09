@@ -1,14 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
 
-
+//importing the routes into the app
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const ideasRouter = require('./routes/ideas')
+const signupRouter = require('./routes/signup')
+
 //signup route
 // const signupRouter= require('./routes/signup');
 
@@ -28,8 +30,8 @@ app.use(cors());
 // users route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/signup',signupRouter)
-
+// app.use('/signup', signupRouter);
+app.use('/users', signupRouter);
 //this is the route for ideas
 app.use('/ideas',ideasRouter);
 
