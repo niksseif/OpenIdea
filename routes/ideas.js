@@ -6,49 +6,47 @@ router.get('/', (req, res, next) =>
 	knex('ideas')
 	.then(rows => res.json(rows))
 );
-//editing the idea
-// router.post('/', (req, res, next) => {
-//
-// 	if (!req.body.user_id ) {
-// 		res.statusCode = 400;
-// 		res.send('{"result": "failed", "message": "email, password, and name are required."}');
-// 		return;
-// 	}
-//
-// 	let title = req.body.title;
-// 	let description = req.body.description;
-// 	let image_url = req.body.image_url
-//
-// 	knex('ideas')
-// 		.where('email', req.body.email)
-// 		.first()
-// 		.then((idea) => {
-// 			if(user_id !== user_id) {
-// 				res.statusCode = 409;
-// 				res.send('{"result": "failed", "message": "Oops that email is already used"}');
-// 				return;
-// 			}
-// 			// create new user record with the email + hashed password
-// 			knex('ideas')
-// 				.insert({
-// 					title: title,
-// 					description: description,
-// 					image_url: image_url,
-// 				})
-// 				.returning('*')
-// 				.then((result) => {
-// 					console.log('OK', result);
-// 					res.statusCode = 200;
-// 					res.send(`{"result": "ok", "user": ${JSON.stringify(result)}}`);
-// 					// res.redirect('/signup1');
-// 				});
-// 		})
-// 		.catch((err) => {
-// 			next(err);
-// 			console.log(err, 'error');
-// 		});
-// });
-//
+//get one idea
+router.get('/:id', (req, res, next) => {
+  knex('ideas')
+  .where('id', req.params.id)
+  .then((data) => {
+    console.log('the specific idea', data)
+    res.json(data)
+  })
+})
+// editing the idea
+// UPDATE one idea, whom already exists in DB
+router.put('/:id', (req, res, next) => {
+  console.log('THE PUT ROUTE OHHHHH<<<<');
 
+	console.log(JSON.stringify(req.body),"<<<<<req.body");
+	console.log(req.params.id,"<<<<<req.params.id");
+  // look up a specific user in the database
+  knex('ideas')
+  .where('ideas.id', req.params.id)
+  .then((data) => {
+    console.log('the specific idea', data)
+
+    // once found, if found, update that user record's data
+    if(data.length) {
+      // user was found, go ahead and update
+      knex('ideas')
+      .update({
+        title: req.body.title || null,
+				description:req.body.description || null,
+				image_url:req.body.image_url || null
+      })
+      .where('id', req.params.id)
+      .returning('*')
+      .then((updateResult) => {
+      console.log('updateResult', updateResult)
+        // respond with the user object, represents a record from the user table
+        // conclude the route
+        res.send(updateResult[0])
+      })
+    }
+  })
+})
 
 module.exports = router;
