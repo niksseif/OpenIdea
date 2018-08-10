@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('ideas', (table) => {
     table.increments();
     table.integer('users_id').notNullable().references('users.id');
-    table.string('title').notNullable();
+    table.string('title');
     table.string('description');
     table.text('image_url');
     table.timestamps(true, true)
