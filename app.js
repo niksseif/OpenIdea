@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const ideasRouter = require('./routes/ideas')
 const signupRouter = require('./routes/signup')
+const postRouter = require('./routes/posts')
 
 //signup route
 // const signupRouter= require('./routes/signup');
@@ -36,6 +37,10 @@ app.use('/users', signupRouter);
 
 //this is the route for ideas
 app.use('/ideas',ideasRouter);
+
+//this is the route for users public posts
+// app.use('/users',postRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
