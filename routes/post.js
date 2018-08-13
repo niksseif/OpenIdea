@@ -7,14 +7,14 @@ const knex = require('../knex.js');
 // /* GET post page. */
 router.get('/:userid/ideas',  (req, res, next) => {
   	knex
-  	// SELECT offers.id, categories.title
-  	.select('users.id', 'users.name', 'users.image_url','ideas.title','ideas.label', 'ideas.image_url','ideas.description')
+  	// SELECT users id and users name 
+  	.select('users.id','users.name','users.image_url as user_image', 'ideas.title','ideas.image_url','ideas.description')
   	// FROM offers
-  	.from('users','ideas')
+  	.from('ideas')
   	// INNER JOIN categories
   	// ON ideas.users_id=ideas.id
-  	.innerJoin('ideas', 'ideas.users_id', 'ideas.id',  )
-  	// WHERE offers.users_id=2;
+  	.join('users', 'users.id', 'ideas.users_id',  )
+  	// WHERE ideas.users_id=2;
   	.where('ideas.users_id', req.params.userid)
   	.then(data => res.json(data));
   })
