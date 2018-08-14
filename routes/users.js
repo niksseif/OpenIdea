@@ -11,6 +11,8 @@ router.get('/', (req, res, next) =>
 
 // GET Specific User
 router.get('/:userid', (req, res, next) => {
+	// let user = await getUser(req.params.userid)
+	// res.json(user)
   knex('users')
   .where('id', req.params.userid)
   .then((data) => {
@@ -18,4 +20,6 @@ router.get('/:userid', (req, res, next) => {
     res.json(data)
   })
 })
+
+
 module.exports = router;

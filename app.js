@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const ideasRouter = require('./routes/ideas')
 const signupRouter = require('./routes/signup')
 const postRouter = require('./routes/post')
+const authRouter = require('./routes/login')
 
 //signup route
 // const signupRouter= require('./routes/signup');
@@ -30,17 +31,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 // users route
 app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 
 // app.use('/signup', signupRouter);
 app.use('/users', signupRouter);
 
 //this is the route for ideas
-app.use('/ideas',ideasRouter);
+app.use('/ideas', ideasRouter);
 
 //this is the route for users public posts
-app.use('/users',postRouter)
+app.use('/users', postRouter)
 
+app.use('/login', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
