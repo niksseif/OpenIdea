@@ -1,8 +1,9 @@
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex.js');
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const service = require('../auth/service')
 
 router.post('/', (req, res, next) => {
   console.log("we hit the login route!, params are:", req.body.email, req.body.password)
@@ -22,7 +23,7 @@ router.post('/', (req, res, next) => {
       req.body.password = ""
 
       if (authenticated) {
-        let token = jwt.sign({ user_id: data[0].id }, 'meow');
+        let token = jwt.signToken({ user_id: data.id }, user.email);
 
         res.status(200).json({"token": token})
 

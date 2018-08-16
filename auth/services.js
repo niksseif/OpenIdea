@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
-process.env.SECRET
+require('dotenv').config()
+let secret = process.env.SECRET
 
 const signToken = (id, email) => {
   return jwt.sign({ _id: id, email }, secrete, { expiresIn: 60 * 60 * 5 })
