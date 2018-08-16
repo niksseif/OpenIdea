@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+require('dotenv').config()
 
 //importing the routes into the app
 const indexRouter = require('./routes/index');
