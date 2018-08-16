@@ -54,7 +54,7 @@ router.post('/', (req, res, next) => {
 					console.log('OK', result);
 					res.statusCode = 200;
 					res.send(`{"result": "ok", "user": ${JSON.stringify(result)}}`);
-					// res.redirect('/signup1');
+					
 				});
 		})
 		.catch((err) => {
