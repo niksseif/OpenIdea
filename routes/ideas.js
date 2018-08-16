@@ -16,8 +16,8 @@ router.get('/:id', (req, res, next) => {
   })
 })
 // editing the idea
-// UPDATE one idea, whom already exists in DB
-router.put('/:id', (req, res, next) => {
+// UPDATE one idea, whom already exists in DB based on user id
+router.put('/:user_id', (req, res, next) => {
   console.log('THE PUT ROUTE OHHHHH<<<<');
 
 	console.log(JSON.stringify(req.body),"<<<<<req.body");
