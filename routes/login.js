@@ -24,8 +24,10 @@ router.post('/', (req, res, next) => {
       if (authenticated) {
         let token = jwt.sign({ user_id: data[0].id }, 'meow');
 
-        res.status(200).send(token)
+        res.status(200).json({"token": token})
 
+      } else {
+        res.status(403).send("Not Allowed, suckas")
       }
     }
 
