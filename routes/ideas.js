@@ -30,6 +30,7 @@ router.get('/:userid',  (req, res, next) => {
   	.where('ideas.users_id', req.params.userid)
   	.then(data => res.json(data));
   })
+
 // editing the idea
 // UPDATE one idea, whom already exists in DB based on user id
 router.put('/:user_id', (req, res, next) => {
