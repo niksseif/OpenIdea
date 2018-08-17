@@ -4,6 +4,7 @@ const knex = require('../knex');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const service = require('../auth/services.js')
 
 
 
@@ -51,11 +52,16 @@ router.post('/', (req, res, next) => {
 				})
 				.returning('*')
 				.then((result) => {
+					const token = service.signToken(user)
 					console.log('OK', result);
+					console.log('token', token);
+					const response = { result: "ok", "token": token }
 					res.statusCode = 200;
-					res.send(`{"result": "ok", "user": ${JSON.stringify(result)}}`);
-					
-				});
+					res.send(JSON.stringify(response));
+
+				})
+				// return res.redirect('/profile')
+
 		})
 		.catch((err) => {
 			next(err);
