@@ -26,7 +26,8 @@ router.post('/', (req, res, next) => {
 	}
 	let email = req.body.email;
 	let name = req.body.name;
-	let password = req.body.password;
+	let password = req.body.password
+	console.log(password,"<<<<");
 	let image_url = req.body.image_url
 	//check the email doesn't already exist in users table
 	knex('users')
@@ -41,7 +42,7 @@ router.post('/', (req, res, next) => {
 
 			// hash the password
 			var hashed = bcrypt.hashSync(req.body.password, 8);
-
+			console.log(hashed,'<<<<hashed');
 			// create new user record with the email + hashed password
 			knex('users')
 				.insert({
