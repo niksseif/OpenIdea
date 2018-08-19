@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "engines": {
+  "node": "10.4.1"
+},
   "dependencies": {
     "bcrypt": "^3.0.0",
     "cookie-parser": "^1.4.3",
@@ -19,5 +22,14 @@
     "morgan": "~1.9.0",
     "pg": "^7.4.3",
     "save": "^2.3.2"
-  }
+  },
+
+    "scripts": {
+    "start": "node ./bin/www",
+    "knex": "knex",
+    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;",
+    "nodemon": "nodemon ./bin/www"
+    }
+
+
 }
