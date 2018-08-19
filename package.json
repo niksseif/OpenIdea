@@ -1,6 +1,9 @@
 {
   "name": "openideabackend",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.4.1"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -26,5 +29,6 @@
   },
   "devDependencies": {
     "dotenv": "^6.0.0"
-  }
+  },
+
 }
