@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
-let secret = process.env.SECRET
+let secrete = process.env.SECRETE
+
+
 
 const signToken = (id, email) => {
   return jwt.sign({ _id: id, email }, secrete, { expiresIn: 60 * 60 * 5 })
@@ -31,6 +33,7 @@ function verifyToken(req, res, next){
 
 
 module.exports = {
-  signToken: signToken, secrete: secrete,
+  signToken: signToken,
+  secrete: secrete,
   verifyToken: verifyToken
 }
