@@ -1,45 +1,33 @@
 {
   "name": "openideabackend",
   "version": "0.0.0",
-  "engines": {
-    "node": "10.4.1"
-  },
   "private": true,
   "scripts": {
+    "test": "NODE_ENV=test mocha",
     "start": "node ./bin/www",
-    "knex": "knex",
-    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;",
-    "nodemon": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "seed-dev": "knex migrate:rollback; knex migrate:latest; knex seed:run",
+    "seed-prod": "heroku run 'knex migrate:rollback; knex migrate:latest; knex seed:run'"
   },
-  "engines": {
-  "node": "10.4.1"
-},
   "dependencies": {
-    "bcrypt": "^3.0.0",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.4",
+    "bcrypt": "^2.0.1",
+    "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
-    "express": "~4.16.0",
+    "express": "^4.16.3",
     "http-errors": "~1.6.2",
-    "jsonwebtoken": "^8.3.0",
-    "knex": "^0.15.2",
+    "knex": "^0.15.0",
     "md5": "^2.2.1",
     "morgan": "~1.9.0",
-    "pg": "^7.4.3",
-    "process-env": "^1.1.0",
-    "save": "^2.3.2"
+    "pg": "^7.4.3"
   },
-
-    "scripts": {
-    "start": "node ./bin/www",
-    "knex": "knex",
-    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;",
-    "nodemon": "nodemon ./bin/www"
-  },
-
   "devDependencies": {
-    "dotenv": "^6.0.0"
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "supertest": "^3.1.0"
   },
-
+  "engines": {
+    "node": "^10.6.0"
+  }
 }
