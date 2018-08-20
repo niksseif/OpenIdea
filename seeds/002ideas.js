@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('ideas').insert([
-        {users_id: 1,title:'My color pallete for my home', description:'I have decided to write code for my new robot to connect it to my Alexa',image_url:'https://i.pinimg.com/564x/8c/f0/60/8cf06020e82ca94ddd8f65b990e84621.jpg',label:'public'},
+        {users_id: 1,title:'My color pallete for my home', description:'Here is the color pallete for my apartment',image_url:'https://i.pinimg.com/564x/8c/f0/60/8cf06020e82ca94ddd8f65b990e84621.jpg',label:'public'},
         {users_id: 2,title:'My next house', description:'this is the plan for the next house i am going to build',image_url:'https://i.pinimg.com/564x/d2/f6/06/d2f606c5bd27ef8ee95c1252da7cd6f4.jpg',label:'public'},
         {users_id: 3,title:'My new project', description:'I want to write a book',image_url:'https://i.pinimg.com/564x/c9/99/3c/c9993c6c4093d50745f8cbc5335196ac.jpg',label:'public'},
         {users_id: 1,title:'My new project', description:'Oxygen',image_url:'https://i.pinimg.com/564x/41/c8/d7/41c8d7be885cd2821a0c43a2dfe07fa4.jpg',label:'public'},
