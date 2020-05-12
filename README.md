@@ -1,4 +1,4 @@
-# OpenIdea-backEnd
+# OpenIdea-backEnd-node.js/express.js
 Full stack web app made by Niksseif 
 Backend link https://github.com/niksseif/OpenIdea
 # Description 
